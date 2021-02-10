@@ -32,10 +32,15 @@ public class StaticMethodExample1 {
         
         // a new line character that works on every computer system
         String nl = System.lineSeparator();
-    
+        
+        // side of a right triangle
+        double a = 0.0;     
+        double b = 0.0; 
+        double hypotenuse = 0.0;
+        
     // ***** objects *****
     
-        //Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         //NumberFormat currency = NumberFormat.getCurrencyInstance();
         
         // file io buffers for reading and writing to text files
@@ -52,14 +57,22 @@ public class StaticMethodExample1 {
     
     // ***** Get Input *****
     
-        // prompt for input
-        // read input from keyboard
-        // echo input back to console window
+        prompt = "Enter side a and side b of a right triangle.:";
+        System.out.println(prompt);
+        a = scanner.nextDouble();
+        b = scanner.nextDouble();
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
     
     // ***** Main Processing *****
     
+        hypotenuse = calculateHype(a, b);
+        //System.out.println("hypotenuse = " + hypotenuse);
+        
     // ***** Print Formatted Output *****
-    
+        
+        printHypotenuse(a, b, hypotenuse);
+        
     // ***** Closing Message *****
     
         System.out.println();
@@ -74,7 +87,7 @@ public class StaticMethodExample1 {
     
     // **** static methods ****
     
-    /* ****************************************
+    /*****************************************
     * Description: brief description of the methods purpose
     * 
     * Interface:
@@ -85,7 +98,46 @@ public class StaticMethodExample1 {
     * @return       any return value will be noted here
     * ****************************************/
     
-    /* ****************************************
+    /*****************************************
+    * Description: print formatted output
+    * 
+    * Interface:
+    * 
+    * @param        a: double, side a of triangle
+    * @param        b: double, side b of triangle
+    * @param        hype: double, hypotenuse of triangle
+    * ****************************************/ 
+    public static void printHypotenuse(double a, double b, double hype){
+        String strout;
+        String nl = System.lineSeparator();
+        
+        strout = "In Triangle abc "+ nl;
+        strout += a + "^2 + " + b + "^2 = ";
+        strout += String.format("%.1f", hype) + nl;
+        
+        System.out.print(strout);        
+    }// end printHypotenuse
+    
+    
+    /*****************************************
+    * Description: calculate the hypotenuse using pythagoras
+    * 
+    * Interface:
+    * 
+    * @param        a: double, side a of triangle
+    * @param        b: double, side b of triangle
+    * 
+    * @return       hypotenuse a^2 + b^3 
+    * ****************************************/  
+    public static double calculateHype(double sideA, double sideB){
+        double hype = 0.0;
+        hype = (sideA * sideA) + (sideB * sideB);
+        hype = Math.sqrt(hype);
+        return hype;
+    }// end calculate hypotenuse
+    
+    
+    /*****************************************
     * Description: print a banner to the screen
     * 
     * Interface:
@@ -106,7 +158,7 @@ public class StaticMethodExample1 {
         return banner;        
     }// end printBannerToScreen    
     
-    /* ****************************************
+    /*****************************************
     * Description: print a banner to the screen
     * 
     * Interface:
