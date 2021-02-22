@@ -60,6 +60,8 @@ public class FormatTemplateV4 {
         // echo input back to console window
     
     // ***** Main Processing *****
+    int age = 0;
+    String st =  "" + age;
     
     // ***** Print Formatted Output *****
     
