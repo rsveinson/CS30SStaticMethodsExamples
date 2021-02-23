@@ -19,6 +19,8 @@ public class StaticMethodArrayExample {
     public static void main(String[] args) throws IOException{
     // ***** constants *******
     
+        final int MAXLIST = 50;
+        
     // ***** variables *****
     
         String banner = "";             // output banner
@@ -38,7 +40,7 @@ public class StaticMethodArrayExample {
         int m = 0;
         double x = 0.0;
         
-        int[] list = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[] list = new int[MAXLIST];
         int length = 0;
         
         int fiveMore = 0;
@@ -52,7 +54,7 @@ public class StaticMethodArrayExample {
         
         // file io buffers for reading and writing to text files
         
-        //BufferedReader fin = new BufferedReader(new FileReader("filename.txt"));
+        BufferedReader fin = new BufferedReader(new FileReader("arraySimpleData.txt"));
         //PrintWriter fout = new PrintWriter(new BufferedWriter(new FileWriter("outfle.txt")));
     
     // ***** print banners *****
@@ -67,11 +69,16 @@ public class StaticMethodArrayExample {
         //fout.print(banner);
     
     // ***** Get Input *****
-
     
+        /* ***** use a static method to load an array from disk ***** */
+        
+        length = loadList(fin, list);
+ 
     // ***** Main Processing *****
     
-        System.out.println(list);
+        printList(list, length);        // use the static method to print the list
+    
+        //System.out.println(list);
         
         // prompt = "enter an integer:";
         // n = getDataFromKb(prompt);
@@ -91,16 +98,16 @@ public class StaticMethodArrayExample {
         
         // process values in the array called list
         
-        for(int i = 0; i < list.length; i++){
-            //System.out.println(list[i]);
-            fiveMore = addFive(list[i]);
-            threeTimes = triple(list[i]);
+        // for(int i = 0; i < list.length; i++){
+            // //System.out.println(list[i]);
+            // fiveMore = addFive(list[i]);
+            // threeTimes = triple(list[i]);
             
-            System.out.format("%5d %5d %5d %s", list[i], fiveMore, threeTimes, nl);
-        }// end for int i
+            // System.out.format("%5d %5d %5d %s", list[i], fiveMore, threeTimes, nl);
+        // }// end for int i
         
-        length = list.length;
-        printList(list, length);
+        // length = list.length;
+        // printList(list, length);
         
     // ***** Print Formatted Output *****
     
@@ -117,10 +124,30 @@ public class StaticMethodArrayExample {
     } // end main 
     
     // **** static methods ****
+    /* ***** load an array of from disk ***** */
+    public static int loadList(BufferedReader f, int[] l)throws IOException{
+        String strin;
+        
+        // pre-loop processing
+        
+        int n = 0;              // the number of elements read from file
+        
+        strin = f.readLine();
+        
+        while(strin != null){
+            //System.out.println(strin);
+            l[n] = Integer.parseInt(strin);
+            n++;
+            
+            strin = f.readLine();
+        }// end eof loop
+        
+        return n;
+    } // end load list
+    
     public static void printList(int[] l, int len){
         for(int i = 0; i < len; i++){
-            System.out.println("List: " + l[i]);
-            
+            System.out.println("List: " + l[i]);            
         }// end for int i
     }// end print list
     
