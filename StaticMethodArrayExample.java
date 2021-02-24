@@ -145,10 +145,13 @@ public class StaticMethodArrayExample {
         return n;
     } // end load list
     
-    public static void printList(int[] l, int len){
+    public static void printList(int[] l, int len)throws IOException{
+        PrintWriter fout = new PrintWriter(new BufferedWriter(new FileWriter("outfle.txt")));
         for(int i = 0; i < len; i++){
-            System.out.println("List: " + l[i]);            
+            System.out.println("List: " + l[i]); 
+            fout.println("List: " + l[i]);
         }// end for int i
+        fout.close();
     }// end print list
     
     public static int addFive(int n){
