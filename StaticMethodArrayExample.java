@@ -76,7 +76,21 @@ public class StaticMethodArrayExample {
  
     // ***** Main Processing *****
     
+    
         printList(list, length);        // use the static method to print the list
+        System.out.println("there are " + length + " numbers in the array.");
+        
+        for(int i = 0; i < length; i++){
+            //System.out.println("list[" + i + "] = " + list[i]);
+            // calculate area
+            // calculate diameter
+            // calculate circumference
+            // print result of calculations to the terminal window
+            //System.out.println(displayResult(list[i], area, diam, circ);
+            
+            // print to the output file
+            //fout.println(displayResult(list[i], area, diam, circ);
+        }
     
         //System.out.println(list);
         
@@ -137,7 +151,7 @@ public class StaticMethodArrayExample {
         while(strin != null){
             //System.out.println(strin);
             l[n] = Integer.parseInt(strin);
-            n++;
+            n++;        // count the actual number of ints read from the data file
             
             strin = f.readLine();
         }// end eof loop
@@ -148,7 +162,7 @@ public class StaticMethodArrayExample {
     public static void printList(int[] l, int len)throws IOException{
         PrintWriter fout = new PrintWriter(new BufferedWriter(new FileWriter("outfle.txt")));
         for(int i = 0; i < len; i++){
-            System.out.println("List: " + l[i]); 
+            //System.out.println("List: " + l[i]); 
             fout.println("List: " + l[i]);
         }// end for int i
         fout.close();
@@ -178,6 +192,17 @@ public class StaticMethodArrayExample {
         return scanner.nextInt();
     }// end get int data
 
+    
+    /* ****************************************
+    * Description: get a double from the keyboard
+    * 
+    * Interface:
+    * 
+    * @param        Strign p: the prompt
+    * @param        double d: a double from main
+    * 
+    * @return       any return value will be noted here
+    * ****************************************/
     public static double getDataFromKb(String p, double d){
         Scanner scanner = new Scanner(System.in);
         System.out.println(p);
